@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 export default class Validator {
 
-  static isValidId (str) {
+  static isValidId (str: any) {
 
     try {
 
