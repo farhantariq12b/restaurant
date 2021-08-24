@@ -56,16 +56,8 @@ const getByID = async (req: Request, res: Response) => {
 const addProduct = async (req: any, res: any) => {
 
   try {
-
-    let productBody = req.body
-    if (req.file) {
-      productBody = {
-        ...productBody,
-        photo: req.file.buffer
-      }
-    }
     
-    const data = await registerProduct(productBody)
+    const data = await registerProduct(req.body, req.file)
     
     return res.json({
       status: ErrorCodes.SUCCESS,
@@ -89,12 +81,11 @@ const deleteProduct = async (req: Request, res: Response) => {
 
   try {
 
-    const data = await removeProduct(req.params.id)
+    await removeProduct(req.params.id)
 
     return res.json({
       status: ErrorCodes.SUCCESS,
-      success: true,
-      data
+      success: true
     });
 
   } catch (err: any) {
@@ -114,22 +105,7 @@ const updateProduct = async (req: any, res: any) => {
 
   try {
 
-    const id = req.params.id;
-
-    let prodcutBody = req.body
-
-    if (req.file) {
-      prodcutBody = {
-        ...prodcutBody,
-        photo: req.file.buffer
-      }
-    }
-
-    const product = await findProduct(req.params.id)
-
-    const updatedBody = Object.assign(product, prodcutBody)
-
-    const data = await changeProduct(id, updatedBody)    
+    const data = await changeProduct(req.params.id, req.body, req.file)    
 
     return res.json({
       status: ErrorCodes.SUCCESS,

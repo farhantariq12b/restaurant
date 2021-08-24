@@ -24,7 +24,7 @@ const restaurantSchema = new Schema(
     },
 
   },
-  { timestamps: true }
+  { timestamps: true, versionKey: false }
 )
 
 export const Restaurant = mongoose.model('Restaurant', restaurantSchema);

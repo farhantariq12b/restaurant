@@ -12,8 +12,17 @@ async function findRestaurant (id: string) {
   return data
 }
 
-async function registerRestaurant (requestBody: any) {
-  const data = await createRestaurant(requestBody)
+async function registerRestaurant (requestBody: any, requestFile: any) {
+  let restaurantBody = requestBody
+
+  if (requestFile) {
+    restaurantBody = {
+      ...restaurantBody,
+      picture: requestFile.buffer
+    }
+  }
+
+  const data = await createRestaurant(restaurantBody)
   return data
 }
 
@@ -24,9 +33,22 @@ async function removeRestaurant (id: string) {
 
 }
 
-async function changeRestaurant (id: string, requestBody: any) {
+async function changeRestaurant (id: string, requestBody: any, requestFile: any) {
 
-  const data = await updateRestaurant(id, requestBody)
+  let restaurantBody = requestBody
+
+  if (requestFile) {
+    restaurantBody = {
+      ...restaurantBody,
+      picture: requestFile.buffer
+    }
+  }
+
+  const restaurant = await findById(id)
+
+  const updatedBody = Object.assign(restaurant, restaurantBody) 
+
+  const data = await updateRestaurant(id, updatedBody)
   return data
 
 }

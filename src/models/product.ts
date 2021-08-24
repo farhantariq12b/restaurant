@@ -29,7 +29,7 @@ const productSchema = new Schema(
       required: true,
     }
   },
-  { timestamps: true }
+  { timestamps: true, versionKey: false }
 )
 
 export const Product = mongoose.model('Product', productSchema);

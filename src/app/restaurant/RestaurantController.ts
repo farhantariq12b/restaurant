@@ -55,16 +55,7 @@ const getByID = async (req: Request, res: Response) => {
 const addRestaurant = async (req: any, res: any) => {
   try {
 
-    let restaurantBody = req.body
-
-    if (req.file) {
-      restaurantBody = {
-        ...restaurantBody,
-        picture: req.file.buffer
-      }
-    }
-
-    const data = await registerRestaurant(restaurantBody)
+    const data = await registerRestaurant(req.body, req.file)
 
     return res.json({
       status: ErrorCodes.SUCCESS,
@@ -87,12 +78,11 @@ const deleteRestaurant = async (req: Request, res: Response) => {
 
   try {
 
-    const data = await removeRestaurant(req.params.id)
+    await removeRestaurant(req.params.id)
 
     return res.json({
       status: ErrorCodes.SUCCESS,
-      success: true,
-      data
+      success: true
     });
 
   } catch (err: any) {
@@ -110,22 +100,7 @@ const updateRestaurant = async (req: any, res: any) => {
 
   try {
 
-    const id = req.params.id;
-
-    let restaurantBody = req.body
-
-    if (req.file) {
-      restaurantBody = {
-        ...restaurantBody,
-        picture: req.file.buffer
-      }
-    }
-
-    const restaurant = await findById(id)
-
-    const updatedBody = Object.assign(restaurant, restaurantBody) 
-
-    const data = await changeRestaurant(id, updatedBody)    
+    const data = await changeRestaurant(req.params.id, req.body, req.file)    
 
     return res.json({
       status: ErrorCodes.SUCCESS,
