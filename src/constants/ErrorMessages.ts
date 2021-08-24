@@ -7,7 +7,8 @@ const ErrorMessages = {
         INVALID_RECORDS: 'Invalid records',
         INVALID_IDS: 'Invalid ids',
         INVALID_FIELDS: 'Invalid fields',
-        INVALID_ORG: 'Invalid Org provided.'
+        INVALID_ORG: 'Invalid Org provided.',
+        NOT_FOUND: 'Not Found'
     }
   }
   

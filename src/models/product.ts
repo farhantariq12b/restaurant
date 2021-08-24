@@ -15,7 +15,7 @@ const productSchema = new Schema(
     },
 
     photo: {
-      type: String,
+      type: Object,
       required: false,
     },
 
