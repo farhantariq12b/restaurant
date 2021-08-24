@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose');
 const cors = require('cors')
-const bodyParser = require('body-parser')
 
 import restaurantRoutes from './routes/restaurant'
 import productRoutes from './routes/product'
@@ -10,8 +9,8 @@ const app = express()
 
 const PORT: string | number = process.env.PORT || 4000
 
-app.use(bodyParser())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded());
+app.use(express.json());
 app.use(cors())
 app.use(restaurantRoutes)
 app.use(productRoutes)

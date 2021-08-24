@@ -1,13 +1,13 @@
 const express = require('express')
 
-import { addRestaurant, deleteRestaurant, getByID, getRestaurants, updateRestaurant } from "../../controllers/products"
+import { addProduct, deleteProduct, getByID, getProductByRestaurantId, updateProduct } from "../../controllers/products"
 
 const router = express.Router()
 
-router.get("/products", getRestaurants)
-router.post("/add-product", addRestaurant)
+router.get("/products/:id", getProductByRestaurantId)
+router.post("/add-product", addProduct)
 router.get("/product/:id", getByID)
-router.put("/product/:id", updateRestaurant)
-router.delete("/product/:id", deleteRestaurant)
+router.put("/product/:id", updateProduct)
+router.delete("/product/:id", deleteProduct)
 
 export default router
