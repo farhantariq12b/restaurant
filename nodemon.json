@@ -1,0 +1,8 @@
+{
+  "env": {
+    "MONGO_USER": "test_user",
+    "MONGO_PASSWORD": "1234",
+    "MONGO_DB": "restaurantDB",
+    "PORT": "5000"
+  }
+}

@@ -1,0 +1,30 @@
+enum FieldType {
+    string = 'string',
+    picklist = 'picklist',
+    multipicklist = 'multipicklist',
+    combobox = 'combobox',
+    reference = 'reference',
+    base64 = 'base64',
+    boolean = 'boolean',
+    currency = 'currency',
+    textarea = 'textarea',
+    int = 'int',
+    double = 'double',
+    percent = 'percent',
+    phone = 'phone',
+    id = 'id',
+    date = 'date',
+    datetime = 'datetime',
+    time = 'time',
+    url = 'url',
+    email = 'email',
+    encryptedstring = 'encryptedstring',
+    datacategorygroupreference = 'datacategorygroupreference',
+    location = 'location',
+    address = 'address',
+    anyType = 'anyType',
+    complexvalue = 'complexvalue',
+    long = 'long'
+}
+
+export default FieldType;
